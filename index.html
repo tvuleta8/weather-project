@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/e0f856ac5d.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <div class="weatherApp">
+      <form class="citySearch">
+        <div class="row">
+          <input
+            type="search"
+            placeholder="Enter a city"
+            class="form-control search-input"
+            id="search-text-input"
+            autocomplete="off"
+          />
+          <button type="submit" value="Search" id="search-button">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button class="locationButton">Use current location</button>
+        </div>
+      </form>
+      <hr />
+      <div class="row">
+        
+            <div class="col-sm-6 now">
+                <h1 class="selectedCity">Paris</h1>
+                <h1><img src="" alt="Clear" id="icon" /></h1>
+                <h1 class="degrees">12°C</h1>
+                <h6 class="units"><a href="" id="units-celsius" class="active">°C</a> | <a href="" id="units-fahrenheit" class="">°F</a></h6>
+            </div>
+            <div class="col-sm-6 now extraInfo">
+                <h5 class="currentTime">18:00</h5>
+                <h5 class="weatherDescription">Cloudy</h5>
+                <h5 class="humidity">Humidity: <span class="humidityValue">73</span>%</h5>
+                <h5 class="wind">Wind: <span class="windValue">2.68</span> km/h</h5>
+            </div>
+        
+    </div>
+        <hr />
+        <div class="laterHeading">Today</div>
+        <div class="row laterToday" id="today-forecast">
+          <div class="col-sm-1 later1">
+            18:00 <br />
+            <i class="fa-solid fa-cloud"></i><br />
+            12°C
+          </div>
+          <div class="col-sm-1 later2">
+            20:00 <br />
+            <i class="fa-solid fa-cloud"></i><br />
+            10°C
+          </div>
+          <div class="col-sm-1 later3">
+            22:00 <br />
+            <i class="fa-solid fa-cloud"></i><br />
+            8°C
+          </div>
+        </div>
+        <hr />
+        <div class="weekHeading">This week</div>
+        <div class="row thisWeek" id="#week-forecast">
+            <div class="col-sm-2 weekday1">
+                <div class="weekdays">TUE</div>
+                <div class="temp">
+                    <span class="maxTemp">11°C</span> | <span class="minTemp">7°C</span>
+                </div>
+                <div class="weatherIcon"><i class="fa-solid fa-cloud"></i></div>
+                <div class="weatherDescription">Cloudy</div>
+          </div>
+        </div>
+      </div>
+      <div class="sourceCode"><a href="https://github.com/tvuleta8/vanilla-weather-app" target="_blank">Source Code</a></div>
+    </div>
+  </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
