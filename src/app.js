@@ -66,7 +66,7 @@ function setBackground(response) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector(".weekHeading");
+  let forecastElement = document.querySelector(".weekForecastHeading");
   console.log(forecastElement);
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
