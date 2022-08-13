@@ -42,7 +42,7 @@ form.addEventListener("submit", search);
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
@@ -61,27 +61,13 @@ function setBackground(response) {
   if (hours > 19 || hours < 6) {
     backgroundColor.style.background =
       "radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%)";
-  } else if (`${response.data.weather[0].main}` === "Thunderstorm") {
-    backgroundColor.style.background =
-      "linear-gradient(to right, #d7d2cc 0%, #304352 100%)";
-  } else if (
-    `${response.data.weather[0].main}` === "Drizzle" ||
-    `${response.data.weather[0].main}` === "Rain" ||
-    `${response.data.weather[0].main}` === "Snow" ||
-    `${response.data.weather[0].main}` === "Mist" ||
-    `${response.data.weather[0].main}` === "Clouds"
-  ) {
-    backgroundColor.style.background =
-      "linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)";
-  } else if (`${response.data.weather[0].main}` === "Clear") {
-    backgroundColor.style.background =
-      "linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%)";
   }
 }
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#week-forecast");
+  let forecastElement = document.querySelector(".weekHeading");
+  console.log(forecastElement);
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
@@ -99,8 +85,8 @@ function displayForecast(response) {
       </div>
       <div class="weatherIcon"><img src="http://openweathermap.org/img/wn/${
         forecastDay.weather[0].icon
-      }@2x.png" alt="${forecastDay.weather[0].main}" width="42"></div>
-      <div class="weatherDescription">${forecastDay.weather[0].main}</div>
+      }@2x.png" alt="${forecastDay.weather[0].main}" width="55"></div>
+      <div class="weatherName">${forecastDay.weather[0].main}</div>
     </div>
   `;
     }
@@ -113,12 +99,12 @@ function displayForecast(response) {
   let forecastTodayElement = document.querySelector("#today-forecast");
   let forecastTodayHTML = `<div class="row">`;
   forecastToday.forEach(function (forecastHour, index) {
-    if (index % 2 == 0) {
+    if (index % 4 == 0) {
       forecastTodayHTML =
         forecastTodayHTML +
         `
           <div class="col-sm-1 later">
-            ${hours}h <br />
+            ${formatHour(forecastHour.dt)}h <br />
             <img src="http://openweathermap.org/img/wn/${
               forecastHour.weather[0].icon
             }@2x.png" alt="${
